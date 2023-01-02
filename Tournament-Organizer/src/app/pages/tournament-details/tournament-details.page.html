@@ -1,0 +1,39 @@
+<app-header [name] = "tournament.title" [points] = "tournament.price" header = "tournament"></app-header>
+<ion-content>
+  <ion-grid class = "grid-td">
+    <ion-row class = "row-td">
+      <img class = "img-td" [src] = "tournament.img">
+    </ion-row>
+    <ion-row style = "padding:10px;">
+      <ion-label class = "labels-td"> Information about the tournament</ion-label>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item class = "item-td">
+      <ion-icon slot = "start" name = "logo-usd"></ion-icon>
+      <ion-label> {{tournament.entranceFee}} Birr</ion-label>
+    </ion-item>
+    <ion-item class = "item-td">
+      <ion-icon slot = "start" name = "location-outline"></ion-icon>
+      <ion-label> {{tournament.city}}, {{tournament.location}}</ion-label>
+    </ion-item>
+    <ion-item class = "item-td">
+      <ion-icon slot = "start" name = "calendar-outline"></ion-icon>
+      <ion-label> {{tournament.date | date: 'medium'}}</ion-label>
+    </ion-item>
+    <ion-item class = "item-td">
+      <ion-icon slot = "start" name = "people-outline"></ion-icon>
+      <ion-label> {{tournament.numberPlayers}}/{{tournament.maxNumberPlayers}}</ion-label>
+    </ion-item>
+    <ion-item class = "item-td" button lines = "none">
+      <ion-icon slot = "start" name = "person-circle-outline"></ion-icon>
+      <ion-label> {{tournament.manager}}</ion-label>
+    </ion-item>
+    <ion-item class = "item-button" lines = "none">
+      <ion-button class = "button-td" *ngIf = "tournament.participating; else p" (click) = "unsign()"> Unsign</ion-button>
+      <ng-template #p>
+        <ion-button class = "button-td" (click) = "sign()" [disabled] = "disableSignIn()"> Sign In</ion-button>
+      </ng-template>
+    </ion-item>
+  </ion-list> 
+</ion-content>

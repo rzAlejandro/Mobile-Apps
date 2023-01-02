@@ -1,0 +1,25 @@
+.title-h{
+    margin-left: 36px;
+    font-family: 'Segoe UI', sans-serif;
+}
+ion-item{
+    display: flex;
+    position: relative;
+    top: 0px;
+    left: 15px;
+    align-items: center;
+}
+ion-avatar {
+    --border-radius: 4px;
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+}
+.icon{
+    color:rgb(245, 212, 27)
+}
+.points{
+    font-size: 1.3em;
+    padding-left: 5px;
+    font-family: 'Segoe UI', sans-serif;
+}

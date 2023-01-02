@@ -1,0 +1,30 @@
+<app-header></app-header>
+<ion-content>
+  <ion-refresher slot = "fixed" (ionRefresh) = "handleRefresh($event)"><ion-refresher-content></ion-refresher-content></ion-refresher>
+  <ion-grid>
+    <ion-row class = "titles">
+      <ion-label class = "labels"> My next tournaments </ion-label>
+    </ion-row>
+    <ion-row *ngFor = "let t of tournaments">
+      <ion-col class = "col">
+        <app-tournament-card  [tournament] = "t"></app-tournament-card>
+      </ion-col>
+    </ion-row>
+    <ion-row class = "titles">
+      <ion-label class = "labels"> Popular tournaments around you</ion-label>
+    </ion-row>
+    <ion-row style = "height: 200px;">
+      <ion-content>
+        <app-my-swiper></app-my-swiper>
+      </ion-content>
+    </ion-row>
+    <ion-row class = "titles">
+      <ion-label class = "labels"> Best players around you</ion-label>
+    </ion-row>
+    <ion-row style = "height: 200px;">
+      <ion-content>
+        <app-ranking></app-ranking>
+      </ion-content>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-item button>
+  <ion-avatar slot="start">
+    <img alt="Silhouette of a person's head" [src]="ranking[0].img" />
+  </ion-avatar>
+  <ion-label class="name ion-text-wrap">
+    {{ranking[0].name}}
+    <ion-icon name = "trophy-sharp" style = "color:rgb(251, 243, 0); margin-left: 20px;"></ion-icon>
+  </ion-label>
+  <ion-label class="ion-text-wrap" style = "margin-left: 30px;">
+    <ion-icon name = "star"></ion-icon>
+    {{ranking[0].points}} 
+  </ion-label>
+</ion-item>
+<ion-item button>
+  <ion-avatar slot="start">
+    <img alt="Silhouette of a person's head" [src]="ranking[1].img" />
+  </ion-avatar>
+  <ion-label class="name ion-text-wrap">
+    {{ranking[1].name}} 
+    <ion-icon name = "trophy-sharp" style = "color:rgb(122, 122, 117); margin-left: 20px;"></ion-icon>
+  </ion-label>
+  <ion-label class="ion-text-wrap" style = "margin-left: 30px;">
+    <ion-icon name = "star"></ion-icon>
+    {{ranking[1].points}} 
+  </ion-label>
+</ion-item>
+<ion-item button lines = "none">
+  <ion-avatar slot="start">
+    <img alt="Silhouette of a person's head" [src]="ranking[2].img" />
+  </ion-avatar>
+  <ion-label class="name ion-text-wrap">
+    {{ranking[2].name}} 
+    <ion-icon name = "trophy-sharp" style = "color:rgb(190, 119, 12);margin-left: 20px;"></ion-icon>
+  </ion-label>
+  <ion-label class="ion-text-wrap" style = "margin-left: 30px;">
+    <ion-icon name = "star"></ion-icon>
+    {{ranking[2].points}} 
+  </ion-label>
+</ion-item>  
+

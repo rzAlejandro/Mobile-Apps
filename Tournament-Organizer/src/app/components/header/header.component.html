@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color = "dark">
+    <ion-avatar slot = "start" *ngIf = "isMain(); else back">
+      <img alt="Silhouette of a person's head" src="./assets/avatares/man.png">
+    </ion-avatar>
+    <ng-template #back>
+      <ion-buttons slot = "start">
+        <ion-button (click) = "myBackButton()" slot="icon-only" size = "large">
+          <ion-icon name = "arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ng-template>
+    <ion-title class = "title-h ion-text-wrap">
+      {{name.toUpperCase()}}
+    </ion-title>
+    <ion-item color = "dark" lines = "none" slot = "end">
+      <ion-icon class = "icon" name = "star"></ion-icon>
+      <ion-label class = "points">{{points}}</ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>

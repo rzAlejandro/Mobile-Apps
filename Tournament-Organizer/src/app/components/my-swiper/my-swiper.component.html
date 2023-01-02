@@ -1,0 +1,22 @@
+<swiper #swiper 
+  [config] = "config" 
+  [pagination] = "{ dynamicBullets: true }"
+  (slideChange) = "swiperSlideChanged($event)"
+  >
+  <ng-template swiperSlide *ngFor = "let t of tournaments"> 
+    <ion-card class = "card">
+      <img [src] = "t.img" class = "img-s">
+      <div class = "card-container">
+        <ion-card-header>
+          <ion-card-title class = "title-s">{{t.title}}</ion-card-title>
+          <ion-card-subtitle class = "subtitle-s">{{t.city}}, {{t.location}}. {{t.date | date: 'medium'}} </ion-card-subtitle>
+        </ion-card-header>
+        <div class = "div-button">
+          <ion-button color = "light" class = "button-s" routerLink = "/tournament-details/{{t.id}}"> 
+            <ion-label>More details</ion-label>
+          </ion-button>
+        </div>
+      </div>
+    </ion-card>
+  </ng-template>
+</swiper>  

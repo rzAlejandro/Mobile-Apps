@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color = "dark">
+    <ion-title class = "ion-text-center">
+      CREATE TOURNAMENT
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+  <form [formGroup] = "form" (ngSubmit) = "createTournament()">
+    <ion-grid>
+      <ion-row class = "row-f">
+        <ion-col>
+          <ion-item counter="true">
+            <ion-label position = "stacked"> Name </ion-label>
+            <ion-input maxlength = "14" placeholder = "Enter name" formControlName = "name"></ion-input>
+            <ion-note *ngIf = "form.controls.name.errors?.minlength" slot="error">Invalid name. Must have more than 3 letters</ion-note>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label position = "stacked"> Entrance Fee </ion-label>
+            <ion-input type = "number" placeholder = "Enter number" formControlName = "entranceFee"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class = "row-f">
+        <ion-col size = "6">
+          <ion-item>
+            <ion-label position = "stacked"> Date </ion-label>
+            <ion-input type = "date" formControlName = "date"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size = "6">
+          <ion-item>
+            <ion-label position = "stacked"> Maximum players </ion-label>
+            <ion-input type = "number" placeholder = "Enter number" formControlName = "maxPlayers"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class = "row-f">
+        <ion-col size = "6">
+          <ion-item>
+            <ion-label position = "stacked"> Price </ion-label>
+            <ion-input type = "number" placeholder = "Enter number" formControlName = "price"></ion-input>
+            <ion-note slot="helper">This is a suggestion. Our team will check it and send you the actual price.</ion-note>
+          </ion-item>
+        </ion-col>
+        <ion-col size = "6">
+          <ion-item>
+            <ion-input type = "file" formControlName = "img"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class = "row-f">
+        <ion-item>
+          <ion-label>Do you want to participate?</ion-label>
+          <ion-checkbox  slot="end"></ion-checkbox>
+        </ion-item>
+      </ion-row>
+    </ion-grid>
+    <p class = "ion-text-center">
+      <ion-button type = "submit" [disabled] = "!form.valid">
+        Create
+      </ion-button>
+    </p>
+  </form>
+</ion-content>

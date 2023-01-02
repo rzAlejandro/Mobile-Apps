@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar lines = "none" color = "dark">
+    <ion-title class = "title-t">TOURNAMENTS</ion-title>
+    <ion-buttons slot = "end">
+      <ion-button (click) = "clickSearch()">
+        <ion-icon name = "search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color = "light">
+      <ion-segment [value] = "segmentValue">
+        <ion-segment-button value = "participating" (click) = "selectParticipating()">Participating</ion-segment-button>
+        <ion-segment-button value = "explore" (click) = "selectExplore()">Explore</ion-segment-button>
+      </ion-segment>
+  </ion-toolbar>
+  <ion-searchbar *ngIf = "openSearchBar" [debounce]="1000" (ionChange)="handleSearch($event)" color = "light"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf = "notSearching; else searching">
+    <ion-list *ngIf = "isParticipating(); else exploring">
+      <ion-item-group *ngIf = "myTournamentsClose.length > 0">
+        <ion-item-divider class = "divider-t1">
+          <ion-label class = "labels">Next month</ion-label>
+          <ion-buttons *ngIf = "myTournamentsClose.length == 4" slot = "end" style = "margin-right: 25px;">
+            <ion-button fill = "solid" color = "primary">View All</ion-button>
+          </ion-buttons>
+        </ion-item-divider>
+        <div class = "item-container-t">
+          <app-tournament-card *ngFor = "let t of myTournamentsClose" [tournament] = "t"></app-tournament-card>
+        </div>
+      </ion-item-group>
+      <ion-item-group *ngIf = "myTournamentsMedium.length > 0">
+        <ion-item-divider class = "divider-t2">
+          <ion-label class = "labels"> Next 3 months</ion-label>
+          <ion-buttons *ngIf = "myTournamentsMedium.length == 4" slot = "end" style = "margin-right: 25px;">
+            <ion-button fill = "solid" color = "primary">View All</ion-button>
+          </ion-buttons>
+        </ion-item-divider>
+        <div class = "item-container-t">
+          <app-tournament-card *ngFor = "let t of myTournamentsMedium" [tournament] = "t"></app-tournament-card>
+        </div>
+      </ion-item-group>
+      <ion-item-group *ngIf = "myTournamentsFar.length > 0">
+        <ion-item-divider class = "divider-t3">
+          <ion-label class = "labels"> Beyond 3 months</ion-label>
+          <ion-buttons *ngIf = "myTournamentsFar.length == 4" slot = "end" style = "margin-right: 25px;">
+            <ion-button fill = "solid" color = "primary">View All</ion-button>
+          </ion-buttons>
+        </ion-item-divider>
+        <div class = "item-container-t">
+          <app-tournament-card *ngFor = "let t of myTournamentsFar" [tournament] = "t"></app-tournament-card>
+        </div>
+      </ion-item-group>
+    </ion-list>
+    <ng-template #exploring>
+      <ion-list>
+        <ion-item-group *ngIf = "exploreTournamentsClose.length > 0">
+          <ion-item-divider class = "divider-t1">
+            <ion-label class = "labels">In your area</ion-label>
+            <ion-buttons slot = "end" style = "margin-right: 25px;">
+              <ion-button fill = "solid" color = "primary">View All</ion-button>
+            </ion-buttons>
+          </ion-item-divider>
+          <div class = "item-container-t">
+            <app-tournament-card *ngFor = "let t of exploreTournamentsClose" [tournament] = "t"></app-tournament-card>
+          </div>
+        </ion-item-group>
+        <ion-item-group *ngIf = "exploreTournamentsNext.length > 0">
+          <ion-item-divider class = "divider-t2">
+            <ion-label class = "labels">Next days</ion-label>
+            <ion-buttons slot = "end" style = "margin-right: 25px;">
+              <ion-button fill = "solid" color = "primary">View All</ion-button>
+            </ion-buttons>
+          </ion-item-divider>
+          <div class = "item-container-t">
+            <app-tournament-card *ngFor = "let t of exploreTournamentsNext" [tournament] = "t"></app-tournament-card>
+          </div>
+        </ion-item-group>
+        <ion-item-group *ngIf = "exploreTournamentsPrices.length > 0">
+          <ion-item-divider class = "divider-t3">
+            <ion-label class = "labels">Highest prices</ion-label>
+            <ion-buttons slot = "end" style = "margin-right: 25px;">
+              <ion-button fill = "solid" color = "primary">View All</ion-button>
+            </ion-buttons>
+          </ion-item-divider>
+          <div class = "item-container-t">
+            <app-tournament-card *ngFor = "let t of exploreTournamentsPrices" [tournament] = "t"></app-tournament-card>
+          </div>
+        </ion-item-group>
+      </ion-list>
+    </ng-template>
+  </div>
+  <ng-template #searching>
+    <ion-item *ngFor = "let r of resultSearch" lines = "none">
+      <app-tournament-card [tournament] = "r"></app-tournament-card>
+    </ion-item>
+    <ion-item *ngIf = "resultSearch.length == 0" lines = "none">
+      <ion-label class = "ion-text-wrap"> Couldn't find the specified tournament. Insert again the name.</ion-label>
+    </ion-item>
+  </ng-template>
+</ion-content>

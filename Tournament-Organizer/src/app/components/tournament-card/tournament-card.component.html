@@ -1,0 +1,40 @@
+<ion-item lines = "inset" button class = "item-tc" routerLink = "/tournament-details/{{tournament.id}}">
+  <ion-thumbnail class = "img-tc">
+    <img [src] = "tournament.img">
+  </ion-thumbnail>
+  <ion-grid class = "grid-tc">
+    <ion-row class = "row-tc">
+      <ion-col>
+        <ion-label class = "title-tc">{{tournament.title}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <div class = "item-points-tc">
+          <ion-icon class = "icon-tc" name = "star"></ion-icon>
+          <ion-label class = "points-tc">{{tournament.price}}</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size = "7">
+        <div class = "elem-tc">
+          <ion-icon name = "location"></ion-icon>
+          <ion-label style = "margin-left: 2px;">{{tournament.city}}, {{tournament.location}}</ion-label>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class = "elem-tc elem-tc-2">
+          <ion-icon name = "people"></ion-icon>
+          <ion-label style = "margin-left: 4px;">{{tournament.numberPlayers}}/{{tournament.maxNumberPlayers}}</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class = "elem-tc">
+          <ion-icon name = "calendar"></ion-icon>
+          <ion-label style = "margin-left: 4px;">{{tournament.date | date: 'medium'}}</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-item>
